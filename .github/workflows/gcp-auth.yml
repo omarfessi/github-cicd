@@ -1,0 +1,41 @@
+name: GCP Authentication Test
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  authenticate-gcp:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: 'read'
+      # This tells GitHub to prepare OIDC token generation
+      id-token: 'write'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        #########################################################################
+        # The google-github-actions/auth@v3 action:
+        # 1. Requests the OIDC token from GitHub
+        # 2. GitHub generates the token (filled with repo info, timestamp, etc.)
+        # 3. The action receives the token
+        # 4. The action sends it to GCP's Workload Identity Provider
+        # 5. GCP verifies the token and issues temporary credentials
+      - name: Authenticate to Google Cloud
+        uses: 'google-github-actions/auth@v3'
+        with:
+          service_account: ${{ vars.SERVICE_ACCOUNT_EMAIL }}
+          workload_identity_provider:  ${{ vars.WORKLOAD_IDENTITY_PROVIDER }}
+
+      - name: Set up Cloud SDK
+        uses: 'google-github-actions/setup-gcloud@v3'
+
+      - name: Verify GCP Authentication
+        run: gcloud config list
+
+      - name: Get current project
+        run: gcloud config get-value project
