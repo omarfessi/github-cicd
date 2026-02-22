@@ -1,0 +1,20 @@
+# GCP Configuration
+project_id = "tooling-2026"
+region     = "global"
+
+# GitHub Configuration
+github_org  = "omarfessi"
+github_repo = "github-cicd"
+
+# Service Account Configuration
+service_account_id = "github-workflows"
+
+# Workload Identity Configuration
+workload_identity_pool_id    = "github-actions-pool"
+workload_identity_provider_id = "github-actions-provider-v2"
+
+# Optional: GitHub token for auto-setting GitHub variables
+# Create token at: https://github.com/settings/personal-access-tokens
+# Select the repository for which to set the variables of its workflows
+# Select Variables read and write permissions
+# github_token = "ghp_xxxxxxxxxxxx"
