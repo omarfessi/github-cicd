@@ -2,8 +2,9 @@ name: GCP Authentication Test
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - .github/**
+      - terraform/**
   workflow_dispatch:
 
 jobs:

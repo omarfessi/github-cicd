@@ -1,0 +1,19 @@
+# Environment & Credentials
+.env
+.env.local
+.env.*.local
+
+# Terraform
+**/.terraform/
+**/.terraform.*
+*.tfstate
+*.tfstate.*
+*tfplan*
+*.tfplan
+
+# IDE
+.vscode/
+
+# Local development
+local/
+tmp/

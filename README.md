@@ -48,6 +48,7 @@ Follow steps in this [link](https://docs.github.com/en/authentication/keeping-yo
 # Export the token as TF_VAR_github_token
 export TF_VAR_github_token="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
+Or just issue this command: source .env.example after copying your token in the file and do not commit it.
 
 ### Step 3: Initialize and Apply Terraform
 
